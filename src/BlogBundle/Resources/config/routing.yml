@@ -1,3 +1,14 @@
-blog_homepage:
+admin_article:
+    resource: "@BlogBundle/Resources/config/routing/article.yml"
+    prefix:   /admin/article/
+    
+article_index:
     path:     /
-    defaults: { _controller: BlogBundle:Default:index }
+    defaults: { _controller: "BlogBundle:Default:index" }
+    methods:  GET
+    
+
+article_detail:
+    path:     /detail/{id}/
+    defaults: { _controller: "BlogBundle:Default:detail" }
+    methods:  GET

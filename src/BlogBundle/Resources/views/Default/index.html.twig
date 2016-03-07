@@ -1,1 +1,28 @@
-Hello World!
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div id="main-content">
+        {% for article in articles %}
+        
+            <div class="article">
+
+                <h2><a href="{{ path('article_detail', { 'id': article.id }) }}">{{ article.title }}</a></h2>
+                
+                <div class="article-date">{{ article.date|date('Y-m-d H:i:s') }}</div>
+                
+                <div class="article-content">{{ article.content }}</div>
+
+				{# TODO: admin login
+                <a href="{{ path('admin_article_edit', { 'id': article.id }) }}">edit</a>
+				#}
+			</div>
+
+        {% endfor %}
+	</div>
+	
+    {# TODO: admin login
+        <a href="{{ path('admin_article_new') }}">Create a new entry</a>
+    #}
+
+{% endblock %}
