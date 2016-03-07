@@ -13,12 +13,14 @@ BlogBundle\Entity\Comment:
             type: text
         date:
             type: datetime
+        username:
+            type: string
+    manyToOne:
+        article:
+            targetEntity: 'BlogBundle\Entity\Article'
+            inversedBy: comments 
+            joinColumn:
+                name: article_id
+                referencedColumnName: id
             
-    manyToMany:
-        articles:
-            targetEntity: BlogBundle\Entity\Article
-            mappedBy: comments
-            inversedBy: null
-            joinTable:
-                name: article_comments
     lifecycleCallbacks: {  }

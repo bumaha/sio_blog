@@ -17,10 +17,9 @@ BlogBundle\Entity\Article:
         date:
             type: datetime
             
-    manyToMany:
+    oneToMany:
         comments:
             targetEntity: BlogBundle\Entity\Comment
-            inversedBy: articles
-            joinTable:
-                name: article_comments
+            mappedBy: article
+
     lifecycleCallbacks: {  }

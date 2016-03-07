@@ -16,6 +16,17 @@ class Comment
      * @var int
      */
     private $id;
+    
+    /**
+     * @var Article
+     */
+    private $article;
+    
+    
+    /**
+     * @var string
+     */
+    private $username;
 
     /**
      * @var string
@@ -54,11 +65,36 @@ class Comment
     }
 
     /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Comment
+     */
+    public function setUsername($username)
+    {
+        $this->username = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+    
+    
+    /**
      * Set content
      *
      * @param string $content
      *
-     * @return Article
+     * @return Comment
      */
     public function setContent($content)
     {
@@ -82,7 +118,7 @@ class Comment
      *
      * @param \DateTime $date
      *
-     * @return Article
+     * @return Comment
      */
     public function setDate($date)
     {
@@ -102,57 +138,26 @@ class Comment
     }
     
     /**
-     * Add Article
-     *
-     * @param Article $article
-     * @return Article
-     */
-    public function addArticle(Article $article)
-    {
-        if (!$this->articles->contains($article)) {
-            $this->articles->add($article);
-        }
-    
-        return $this;
-    }
-    
-    /**
-     * Remove Article
-     *
-     * @param Article $article
-     */
-    public function removeWebContent(Article $article)
-    {
-        $this->articles->removeElement($article);
-    }
-    
-    /**
-     * Get Articles
-     *
-     * @return Collection
-     */
-    public function getWebContents()
-    {
-        return $this->articles;
-    }
-
-    /**
-     * Remove article
+     * Set article
      *
      * @param \BlogBundle\Entity\Article $article
+     * 
+     * @return Comment
      */
-    public function removeArticle(\BlogBundle\Entity\Article $article)
+    public function setArticle(Article $article)
     {
-        $this->articles->removeElement($article);
+        $this->article = $article;
+        
+        return $this;
     }
 
     /**
      * Get articles
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Article
      */
-    public function getArticles()
+    public function getArticle()
     {
-        return $this->articles;
+        return $this->article;
     }
 }
