@@ -16,13 +16,25 @@
 				{# TODO: admin login
                 <a href="{{ path('admin_article_edit', { 'id': article.id }) }}">edit</a>
 				#}
+				
+				<div class="comments">
+				
+                    <form method="post" name="add-comment" action="{{ path('article_add_comment', { 'articleId': article.id }) }}">
+                        {{ form_row(commentForm.username) }}
+                        {{ form_row(commentForm.content) }}
+                        <input type="submit" value="Diesen Artikel Kommentieren" />
+                    </form>
+					
+				</div>
+				
 			</div>
 
         {% endfor %}
 	</div>
 	
     {# TODO: admin login
-        <a href="{{ path('admin_article_new') }}">Create a new entry</a>
     #}
+    <a href="{{ path('admin_article_new') }}">Create a new entry</a>
+    
 
 {% endblock %}

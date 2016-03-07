@@ -73,7 +73,7 @@ class Comment
      */
     public function setUsername($username)
     {
-        $this->username = $content;
+        $this->username = $username;
 
         return $this;
     }

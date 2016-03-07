@@ -18,3 +18,9 @@ admin_article_delete:
     path:     /{id}/delete
     defaults: { _controller: "BlogBundle:Article:delete" }
     methods:  DELETE
+    
+    
+article_add_comment:
+    path:     /add-comment/{articleId}
+    defaults: { _controller: "BlogBundle:Article:addComment" }
+    methods:  POST

@@ -6,7 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use BlogBundle\Entity\Article;
+use BlogBundle\Entity\Comment;
 use BlogBundle\Form\ArticleType;
+use BlogBundle\Form\CommentType;
 
 /**
  * Article controller.
@@ -112,4 +114,29 @@ class ArticleController extends Controller
             ->getForm()
         ;
     }
+    
+
+    /**
+     * Add Comment to Article
+     */
+    public function addCommentAction(Request $request, $articleId)
+    {
+        $comment = new Comment();
+        $form = $this->createForm('BlogBundle\Form\CommentType', $comment);
+        
+        $form->handleRequest($request);
+        
+        // TODO: form handling!?
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+           
+            $em->persist($comment);
+            $em->flush();
+        }   
+        
+        return $this->redirectToRoute('article_index');
+    
+    }
+    
 }
